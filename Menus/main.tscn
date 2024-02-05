@@ -1,0 +1,444 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Menus/main.gd" type="Script" id=1]
+[ext_resource path="res://OldTiles.tres" type="TileSet" id=2]
+[ext_resource path="res://Assets/Text/IridosTitle.png" type="Texture" id=3]
+[ext_resource path="res://Menus/buttonCus.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/uiTheme.tres" type="Theme" id=5]
+[ext_resource path="res://Assets/Candle.png" type="Texture" id=7]
+[ext_resource path="res://Assets/light.png" type="Texture" id=8]
+[ext_resource path="res://Assets/background.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Text/IridosLogo.png" type="Texture" id=10]
+[ext_resource path="res://columnTiles.tres" type="TileSet" id=11]
+[ext_resource path="res://Assets/Buttons/defaultBase.png" type="Texture" id=12]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 12, 28, 38 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 12, 28, 38 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 12, 28, 38 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 7 )
+region = Rect2( 96, 12, 28, 38 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="main" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.341176, 0.341176, 0.341176, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.00313
+margin_bottom = -3.05176e-05
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 8, 0, 1, 11, 0, 2, 33, 0, 3, 11, 0, 4, 11, 0, 5, 8, 0, 6, 33, 0, 7, 11, 0, 8, 11, 0, 9, 11, 0, 10, 30, 0, 11, 30, 0, 12, 30, 0, 13, 11, 0, 14, 11, 0, 15, 33, 0, 16, 11, 0, 17, 33, 0, 18, 33, 0, 19, 11, 0, 20, 11, 0, 21, 11, 0, 22, 30, 0, 23, 30, 0, 24, 30, 0, 25, 11, 0, 26, 33, 0, 27, 11, 0, 28, 11, 0, 29, 8, 0, 30, 11, 0, 31, 11, 0, 32, 33, 0, 33, 11, 0, 34, 8, 0, 65536, 38, 0, 65546, 24, 0, 65547, 19, 0, 65548, 25, 0, 65558, 24, 0, 65559, 19, 0, 65560, 25, 0, 65570, 1, 0, 131072, 38, 0, 131083, 19, 0, 131095, 19, 0, 131106, 1, 0, 196608, 2, 0, 196619, 19, 0, 196631, 19, 0, 196642, 36, 0, 262144, 38, 0, 262155, 19, 0, 262167, 19, 0, 262178, 1, 0, 327680, 2, 0, 327691, 19, 0, 327703, 19, 0, 327714, 1, 0, 393216, 2, 0, 393227, 19, 0, 393239, 19, 0, 393250, 1, 0, 458752, 38, 0, 458763, 19, 0, 458775, 19, 0, 458786, 1, 0, 524288, 2, 0, 524292, 15, 0, 524293, 16, 0, 524294, 17, 0, 524299, 19, 0, 524311, 19, 0, 524316, 15, 0, 524317, 16, 0, 524318, 17, 0, 524322, 36, 0, 589824, 2, 0, 589828, 18, 0, 589829, 19, 0, 589830, 20, 0, 589835, 19, 0, 589847, 19, 0, 589852, 18, 0, 589853, 19, 0, 589854, 20, 0, 589858, 1, 0, 655360, 2, 0, 655364, 21, 0, 655365, 22, 0, 655366, 23, 0, 655371, 19, 0, 655383, 19, 0, 655388, 21, 0, 655389, 22, 0, 655390, 23, 0, 655394, 1, 0, 720896, 2, 0, 720907, 19, 0, 720919, 19, 0, 720930, 1, 0, 786432, 2, 0, 786443, 19, 0, 786455, 19, 0, 786466, 36, 0, 851968, 38, 0, 851979, 19, 0, 851991, 19, 0, 852002, 1, 0, 917504, 2, 0, 917515, 19, 0, 917527, 19, 0, 917538, 1, 0, 983040, 2, 0, 983051, 19, 0, 983063, 19, 0, 983074, 36, 0, 1048576, 2, 0, 1048587, 19, 0, 1048599, 19, 0, 1048610, 1, 0, 1114112, 2, 0, 1114123, 19, 0, 1114135, 19, 0, 1114146, 36, 0, 1179648, 2, 0, 1179658, 13, 0, 1179659, 19, 0, 1179660, 14, 0, 1179670, 13, 0, 1179671, 19, 0, 1179672, 14, 0, 1179682, 36, 0, 1245184, 8, 0, 1245185, 8, 0, 1245186, 27, 0, 1245187, 8, 0, 1245188, 27, 0, 1245189, 27, 0, 1245190, 27, 0, 1245191, 27, 0, 1245192, 27, 0, 1245193, 8, 0, 1245194, 8, 0, 1245195, 8, 0, 1245196, 8, 0, 1245197, 8, 0, 1245198, 8, 0, 1245199, 27, 0, 1245200, 27, 0, 1245201, 27, 0, 1245202, 27, 0, 1245203, 27, 0, 1245204, 8, 0, 1245205, 8, 0, 1245206, 8, 0, 1245207, 8, 0, 1245208, 8, 0, 1245209, 8, 0, 1245210, 8, 0, 1245211, 8, 0, 1245212, 8, 0, 1245213, 27, 0, 1245214, 8, 0, 1245215, 8, 0, 1245216, 8, 0, 1245217, 8, 0, 1245218, 8, 0 )
+
+[node name="TileMap2" type="TileMap" parent="."]
+modulate = Color( 0.513726, 0.513726, 0.513726, 1 )
+tile_set = ExtResource( 11 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 65541, 6, 0, 65565, 6, 0, 131077, 7, 0, 131101, 7, 0, 196613, 7, 0, 196637, 7, 0, 262149, 0, 0, 262173, 0, 0, 327685, 7, 0, 327709, 7, 0, 393221, 7, 0, 393245, 7, 0, 458757, 8, 0, 458766, 0, 0, 458772, 0, 0, 458781, 8, 0, 524302, 2, 0, 524308, 2, 0, 589838, 3, 0, 589844, 3, 0, 655374, 3, 0, 655380, 3, 0, 720910, 3, 0, 720916, 3, 0, 786446, 3, 0, 786451, 3, 0, 786452, 3, 0, 851982, 3, 0, 851987, 3, 0, 851988, 3, 0, 917518, 3, 0, 917524, 3, 0, 983054, 3, 0, 983060, 3, 0, 1048590, 3, 0, 1048596, 3, 0, 1114126, 3, 0, 1114132, 3, 0, 1179649, 1, 0, 1179651, 1, 0, 1179654, 1, 0, 1179656, 1, 0, 1179662, 4, 0, 1179663, 1, 0, 1179665, 1, 0, 1179668, 4, 0, 1179674, 1, 0, 1179677, 1, 0, 1179679, 1, 0, 1179681, 1, 0, 1245189, 0, 0, 1245213, 0, 0 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+light_mask = 0
+position = Vector2( 60, 287 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+offset = Vector2( 28, -2 )
+
+[node name="Light2D" type="Light2D" parent="AnimatedSprite"]
+position = Vector2( 28, -5 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 8 )
+texture_scale = 0.88
+energy = 1.12
+range_layer_min = -1
+range_layer_max = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite"]
+light_mask = 0
+position = Vector2( 411, -2 )
+frames = SubResource( 5 )
+frame = 2
+playing = true
+
+[node name="Light2D" type="Light2D" parent="AnimatedSprite/AnimatedSprite"]
+position = Vector2( 0, -3 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 8 )
+texture_scale = 0.88
+energy = 1.12
+range_layer_min = -1
+range_layer_max = 1
+
+[node name="playScreen" type="Control" parent="."]
+unique_name_in_owner = true
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Title" type="TextureRect" parent="playScreen"]
+visible = false
+light_mask = 0
+anchor_left = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.5
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Title2" type="TextureRect" parent="playScreen"]
+light_mask = 0
+anchor_left = 0.342857
+anchor_top = 0.113
+anchor_right = 0.657143
+anchor_bottom = 0.38558
+margin_left = 7.62939e-05
+margin_right = -9.15527e-05
+margin_bottom = -1.00002
+texture = ExtResource( 10 )
+stretch_mode = 4
+
+[node name="debug" parent="playScreen" instance=ExtResource( 4 )]
+visible = false
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+margin_left = 405.0
+margin_top = 99.5
+margin_right = 540.0
+margin_bottom = 138.5
+text = "Testing"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="playScreen"]
+light_mask = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = 0.5
+margin_right = 67.0
+margin_bottom = 144.5
+grow_horizontal = 2
+
+[node name="play" parent="playScreen/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 135.0
+margin_bottom = 39.0
+text = "Play"
+
+[node name="controls" parent="playScreen/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 47.0
+margin_right = 135.0
+margin_bottom = 86.0
+text = "Controls"
+
+[node name="quit" parent="playScreen/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 94.0
+margin_right = 135.0
+margin_bottom = 133.0
+text = "Quit"
+
+[node name="levelSelect" type="Control" parent="."]
+visible = false
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="levelSelect"]
+light_mask = 0
+anchor_left = 0.0446429
+anchor_top = 0.0673981
+anchor_right = 0.955357
+anchor_bottom = 0.932602
+texture = ExtResource( 12 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="levelSelect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 31.0
+margin_top = 27.0
+margin_right = -31.0
+margin_bottom = -64.0
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="levelSelect/ScrollContainer"]
+margin_right = 498.0
+margin_bottom = 228.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="intro" type="Button" parent="levelSelect/ScrollContainer/GridContainer"]
+margin_right = 161.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+text = "Intro"
+
+[node name="tutorialLevel" type="Button" parent="levelSelect/ScrollContainer/GridContainer"]
+margin_left = 169.0
+margin_right = 330.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+text = "Tutorial"
+
+[node name="levelOne" parent="levelSelect/ScrollContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 338.0
+margin_right = 498.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+text = "1-1"
+
+[node name="levelTwo" parent="levelSelect/ScrollContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 47.0
+margin_right = 161.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+text = "1-2"
+
+[node name="levelThree" parent="levelSelect/ScrollContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 169.0
+margin_top = 47.0
+margin_right = 330.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+text = "1-3"
+
+[node name="levelFour" parent="levelSelect/ScrollContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 338.0
+margin_top = 47.0
+margin_right = 498.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+text = "1-4"
+
+[node name="levelFive" parent="levelSelect/ScrollContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 94.0
+margin_right = 161.0
+margin_bottom = 133.0
+size_flags_horizontal = 3
+text = "1-5"
+
+[node name="levelBoss" parent="levelSelect/ScrollContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 169.0
+margin_top = 94.0
+margin_right = 330.0
+margin_bottom = 133.0
+size_flags_horizontal = 3
+text = "1-Boss"
+
+[node name="levelSix" parent="levelSelect/ScrollContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 338.0
+margin_top = 94.0
+margin_right = 498.0
+margin_bottom = 133.0
+size_flags_horizontal = 3
+text = "2-1"
+
+[node name="levelSeven" parent="levelSelect/ScrollContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 141.0
+margin_right = 161.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+text = "2-2"
+
+[node name="levelEight" parent="levelSelect/ScrollContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 169.0
+margin_top = 141.0
+margin_right = 330.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+text = "2-3"
+
+[node name="levelNine" parent="levelSelect/ScrollContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 338.0
+margin_top = 141.0
+margin_right = 498.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+text = "2-4"
+
+[node name="levelTen" parent="levelSelect/ScrollContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 188.0
+margin_right = 161.0
+margin_bottom = 227.0
+size_flags_horizontal = 3
+text = "2-5"
+
+[node name="debug" parent="levelSelect/ScrollContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 169.0
+margin_top = 188.0
+margin_right = 330.0
+margin_bottom = 227.0
+size_flags_horizontal = 3
+text = "Debug"
+
+[node name="back" parent="levelSelect" instance=ExtResource( 4 )]
+anchor_left = 0.427679
+anchor_top = 0.799373
+anchor_right = 0.572322
+anchor_bottom = 0.921631
+text = "Back"
+
+[node name="controlsScreen" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="controlsScreen"]
+light_mask = 0
+anchor_left = 0.0446429
+anchor_top = 0.0673981
+anchor_right = 0.955357
+anchor_bottom = 0.932602
+texture = ExtResource( 12 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ControlsLabel" type="RichTextLabel" parent="controlsScreen"]
+margin_left = 186.0
+margin_top = 23.0
+margin_right = 308.0
+margin_bottom = 49.0
+rect_scale = Vector2( 1.6, 1.75 )
+theme = ExtResource( 5 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Controls[/center]"
+text = "Controls"
+fit_content_height = true
+scroll_active = false
+
+[node name="ControlsText" type="RichTextLabel" parent="controlsScreen"]
+anchor_left = 0.0642857
+anchor_top = 0.213166
+anchor_right = 0.938571
+anchor_bottom = 0.717241
+margin_top = 6.00001
+margin_right = 122.4
+margin_bottom = 46.2
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 5 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "-Use WASD to move, and spacebar to jump.
+-LShift to dash
+-Left Click to jab with the spear.
+-Right Click to throw the spear.
+-Click on the spear again or press Q to retrieve it.
+-Use E to interact with objects and npcs.
+-Press ESC to access the pause menu."
+text = "-Use WASD to move, and spacebar to jump.
+-LShift to dash
+-Left Click to jab with the spear.
+-Right Click to throw the spear.
+-Click on the spear again or press Q to retrieve it.
+-Use E to interact with objects and npcs.
+-Press ESC to access the pause menu."
+scroll_active = false
+
+[node name="back" parent="controlsScreen" instance=ExtResource( 4 )]
+anchor_left = 0.25
+anchor_top = 0.789969
+anchor_right = 0.75
+anchor_bottom = 0.912226
+text = "Back"
+
+[connection signal="pressed" from="playScreen/debug" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="playScreen/VBoxContainer/play" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="playScreen/VBoxContainer/controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="playScreen/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/intro" to="." method="_on_intro_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/tutorialLevel" to="." method="_on_tutorialLevel_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/levelOne" to="." method="_on_levelOne_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/levelTwo" to="." method="_on_levelTwo_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/levelThree" to="." method="_on_levelThree_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/levelFour" to="." method="_on_levelFour_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/levelFive" to="." method="_on_levelFive_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/levelBoss" to="." method="_on_levelBoss_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/levelSix" to="." method="_on_levelSix_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/levelSeven" to="." method="_on_levelSeven_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/levelEight" to="." method="_on_levelEight_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/levelNine" to="." method="_on_levelNine_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/levelTen" to="." method="_on_levelTen_pressed"]
+[connection signal="pressed" from="levelSelect/ScrollContainer/GridContainer/debug" to="." method="_on_Debug_pressed"]
+[connection signal="pressed" from="levelSelect/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="controlsScreen/back" to="." method="_on_back_pressed"]

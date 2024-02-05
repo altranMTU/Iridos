@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/light.png" type="Texture" id=1]
+[ext_resource path="res://OldTiles.tres" type="TileSet" id=2]
+[ext_resource path="res://Levels/Intro.gd" type="Script" id=3]
+[ext_resource path="res://Interactables/introText.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0, 0.0969696, 0.302734, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 256
+
+[node name="Node2D2" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="interactBase" parent="." instance=ExtResource( 4 )]
+text = "With the fire demon defeated, \\\"peace\\\" was restored to the lands.\\\\ But at what cost? Traveller, you have taken away the lives of many inhabitants of the cave. Although they were posessed, it is still a crime against life itself.\\\\ You have been sent to hell for your sins."
+nextLevel = "res://Levels/level2-1.tscn"
+
+[node name="Light2D" parent="interactBase" index="0"]
+position = Vector2( 78, 43 )
+
+[node name="TextureRect" parent="interactBase/CanvasInteractions/dialog" index="1"]
+visible = false
+
+[node name="Blinky" parent="interactBase/CanvasInteractions/dialog" index="3"]
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 560.0
+margin_right = 319.0
+margin_bottom = 241.0
+rect_rotation = 90.0
+texture = SubResource( 2 )
+stretch_mode = 1
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 1310720, 22, 0, 1310721, 22, 0, 1310722, 22, 0, 1310723, 22, 0, 1310724, 22, 0, 1310725, 22, 0, 1310726, 22, 0, 1310727, 22, 0, 1310728, 22, 0, 1310729, 22, 0, 1310730, 22, 0, 1310731, 22, 0, 1310732, 22, 0, 1310733, 22, 0, 1310734, 22, 0, 1310735, 22, 0, 1310736, 22, 0, 1310737, 22, 0, 1310738, 22, 0, 1310739, 22, 0, 1310740, 22, 0, 1310741, 22, 0, 1310742, 22, 0, 1310743, 22, 0, 1310744, 22, 0, 1310745, 22, 0, 1310746, 22, 0, 1310747, 22, 0, 1310748, 22, 0, 1310749, 22, 0, 1310750, 22, 0, 1310751, 22, 0, 1310752, 22, 0, 1310753, 22, 0, 1310754, 22, 0 )
+
+[node name="playerSpawn" type="Position2D" parent="."]
+position = Vector2( 262, 303 )
+
+[node name="Light2D" type="Light2D" parent="playerSpawn"]
+visible = false
+scale = Vector2( 5, 5 )
+texture = ExtResource( 1 )
+texture_scale = 0.5
+energy = 0.99
+shadow_enabled = true
+
+[editable path="interactBase"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Interactables/interactBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/jabStabCab.png" type="Texture" id=2]
+[ext_resource path="res://Interactables/interactNpc.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Text/Courneuf-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="RectangleShape2D" id=4]
+
+[sub_resource type="DynamicFont" id=6]
+size = 18
+font_data = ExtResource( 4 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 84, 141, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 111, 141, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 54, 141, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 1 ), SubResource( 3 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[node name="interactBase" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+mode = 1
+
+[node name="playerDetection" parent="." index="1"]
+position = Vector2( 0, -2 )
+shape = SubResource( 4 )
+
+[node name="hint" parent="CanvasInteractions" index="0"]
+visible = true
+margin_left = 5.0
+margin_right = 136.0
+text = "Mr. Cab"
+
+[node name="dialogBox" parent="CanvasInteractions/dialog/VBoxContainer/HBoxContainer" index="0"]
+custom_fonts/normal_font = SubResource( 6 )
+
+[node name="Blinky" parent="CanvasInteractions/dialog" index="3"]
+frame = 0
+
+[node name="message" parent="CanvasInteractions/popup/VBoxContainer" index="0"]
+margin_bottom = 60.0
+
+[node name="HBoxContainer" parent="CanvasInteractions/popup/VBoxContainer" index="1"]
+margin_top = 68.0
+margin_bottom = 107.0
+
+[node name="option1" parent="CanvasInteractions/popup/VBoxContainer/HBoxContainer" index="0"]
+margin_right = 161.0
+
+[node name="option2" parent="CanvasInteractions/popup/VBoxContainer/HBoxContainer" index="1"]
+margin_left = 169.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="4"]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 5 )
+animation = "walk"

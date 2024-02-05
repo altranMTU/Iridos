@@ -1,0 +1,173 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Enemies/baseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/mccinders.png" type="Texture" id=2]
+[ext_resource path="res://Assets/purplecinderanim.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/flameyHead.gd" type="Script" id=4]
+[ext_resource path="res://Sounds/Attacks/Flamey-Head-Loop.Capanda.Team-7.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/Attacks/Flamey-Head-intro.Capanda.Team-7.wav" type="AudioStream" id=6]
+[ext_resource path="res://Enemies/DeathParticles.gd" type="Script" id=7]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.658824, 0.517647, 0.952941, 1, 0.419608, 0.243137, 0.458824, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.748387, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 4.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 3, 0 )
+initial_velocity = 2.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.5
+color_ramp = SubResource( 5 )
+color_initial_ramp = SubResource( 3 )
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.748387, 1 )
+colors = PoolColorArray( 0.564706, 0.368627, 0.662745, 1, 0.419608, 0.243137, 0.458824, 1, 0.419608, 0.243137, 0.458824, 0 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 30.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.5
+color_ramp = SubResource( 8 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+}, {
+"frames": [ SubResource( 12 ) ],
+"loop": true,
+"name": "defaultdead",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 11 ) ],
+"loop": true,
+"name": "redcinder",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 13 ) ],
+"loop": true,
+"name": "reddead",
+"speed": 5.0
+} ]
+
+[node name="enemy" instance=ExtResource( 1 )]
+collision_mask = 16
+script = ExtResource( 4 )
+
+[node name="SloppyFace" type="Sprite" parent="." index="0"]
+visible = false
+light_mask = 0
+position = Vector2( -4, -4 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+__meta__ = {
+"_editor_description_": "im just trying to add it"
+}
+
+[node name="TrailParticles" type="Particles2D" parent="." index="1"]
+light_mask = 0
+position = Vector2( 0, 4 )
+amount = 40
+local_coords = false
+process_material = SubResource( 6 )
+
+[node name="DeathParticles" type="Particles2D" parent="." index="2"]
+light_mask = 0
+position = Vector2( 0, 4 )
+amount = 200
+lifetime = 0.4
+process_material = SubResource( 9 )
+script = ExtResource( 7 )
+
+[node name="DeathTimer" type="Timer" parent="DeathParticles" index="0"]
+wait_time = 0.5
+
+[node name="AnimatedSprite" parent="." index="3"]
+frames = SubResource( 1 )
+frame = 3
+playing = true
+
+[node name="mapCollider" parent="." index="4"]
+position = Vector2( 0, 0.125 )
+
+[node name="hitbox" parent="." index="7"]
+visible = true
+
+[node name="collider" parent="hitbox" index="0"]
+visible = false
+position = Vector2( 0, 0 )
+
+[node name="Ambiance" type="AudioStreamPlayer2D" parent="." index="9"]
+stream = ExtResource( 5 )
+volume_db = 3.0
+autoplay = true
+max_distance = 300.0
+attenuation = 2.54912
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." index="10"]
+stream = ExtResource( 6 )
+
+[connection signal="timeout" from="DeathParticles/DeathTimer" to="DeathParticles" method="_on_DeathTimer_timeout"]
+[connection signal="finished" from="Ambiance" to="." method="_on_Ambiance_finished"]
